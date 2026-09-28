@@ -1,0 +1,14 @@
+# Dependencias del proyecto "API con JWT" (2da parte - Lenguaje)
+# Python 3.11
+# Instalar:  py -m pip install -r requirements.txt
+# Ejecutar:  py -m uvicorn main:app --reload
+
+# --- Framework y servidor ---
+fastapi==0.141.1
+uvicorn[standard]==0.54.0
+python-multipart==0.0.32        # requerido por OAuth2PasswordRequestForm (/login)
+
+# --- Autenticacion: JWT + hashing de contrasenas ---
+python-jose[cryptography]==3.5.0
+passlib==1.7.4
+bcrypt==4.0.1                    # passlib 1.7.4 es incompatible con bcrypt >= 4.1
