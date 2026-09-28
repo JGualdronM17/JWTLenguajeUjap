@@ -3,6 +3,8 @@
 API REST con autenticacion por token JWT y control de acceso por rol.
 FastAPI + passlib/bcrypt + python-jose.
 
+El codigo esta en la carpeta `api_jwt/`.
+
 ## Requisitos
 
 - Python 3.9 o superior
@@ -10,12 +12,14 @@ FastAPI + passlib/bcrypt + python-jose.
 ## Instalacion
 
 ```
+cd api_jwt
 pip install -r requirements.txt
 ```
 
 ## Ejecucion
 
 ```
+cd api_jwt
 uvicorn main:app --reload
 ```
 
@@ -29,8 +33,8 @@ La documentacion interactiva (Swagger) queda en: http://127.0.0.1:8000/docs
 | maria@ujap.edu.ve | profesor123 | profesor |
 
 Las contrasenas estan en el codigo a proposito: es una base de datos simulada para
-poder probar los tres casos sin montar una base real. En un proyecto real se
-guardaria solo el hash y la contrasena viviria en el usuario.
+poder probar los tres casos sin montar una base real. Lo que se guarda es el hash
+bcrypt, nunca la contrasena del usuario.
 
 ## Endpoints
 
@@ -49,11 +53,14 @@ guardaria solo el hash y la contrasena viviria en el usuario.
 4. `GET /admin` -> Execute. Sale 403 "Solo para profesores" porque el token es
    del estudiante.
 
-Las capturas de esos tres casos estan en la carpeta `capturas/`.
+Las capturas de esos tres casos estan en `api_jwt/capturas/`.
 
 ## Estructura
 
-- `auth.py` - `hash_password`, `verify_password`, `create_token`, `get_current_user`
-- `main.py` - los cuatro endpoints
-- `requirements.txt` - dependencias con versiones fijadas
-- `capturas/` - evidencias de los tres casos
+```
+api_jwt/
+├── auth.py            - hash_password, verify_password, create_token, get_current_user
+├── main.py            - los cuatro endpoints
+├── requirements.txt   - dependencias con versiones fijadas
+└── capturas/          - evidencias de los tres casos
+```
